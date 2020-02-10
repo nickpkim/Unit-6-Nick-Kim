@@ -24,5 +24,10 @@ public class MusicLibraryClient {
         System.out.println(myLibrary);
 
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
+
+        int loc1 = myLibrary.titleSearchLinear("FIRST");
+        int loc2 = myLibrary.artistSearchLinear("peop");
+        System.out.println(myLibrary.getAlbum(loc1));
+        System.out.println(myLibrary.getAlbum(loc2));
     }
 }

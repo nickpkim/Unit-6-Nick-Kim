@@ -9,6 +9,12 @@ public class Album {
         this.songNum = songNum;
         this.duration = duration;
     }
+    public String getTitle(){
+        return title;
+    }
+    public String getArtist(){
+        return artist;
+    }
     public int getSongNum(){
         return songNum;
     }
