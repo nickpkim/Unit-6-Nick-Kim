@@ -63,20 +63,92 @@ public class MusicLibrary {
         }
         return -1;
     }
+    public int titleSearchBinary(String target){
+        int low = 0, high = albums.length-1, middle = (low + high)/2;
+        while (target.toLowerCase().compareTo(albums[middle].getTitle().toLowerCase()) != 0 && low <= high){
+            if (target.toLowerCase().compareTo(albums[middle].getTitle().toLowerCase()) < 0){
+                high = middle - 1;
+            } else {
+                low = middle + 1;
+            }
+            middle = (low + high)/2;
+        }
+        if (target.toLowerCase().compareTo(albums[middle].getTitle().toLowerCase()) == 0){
+            return middle;
+        } else {
+            return -1;
+        }
+    }
+    public int artistSearchBinary(String target){
+        int low = 0, high = albums.length-1, middle = (low + high)/2;
+        while (target.toLowerCase().compareTo(albums[middle].getArtist().toLowerCase()) != 0 && low <= high){
+            if (target.toLowerCase().compareTo(albums[middle].getArtist().toLowerCase()) < 0){
+                high = middle - 1;
+            } else {
+                low = middle + 1;
+            }
+            middle = (low + high)/2;
+        }
+        if (target.toLowerCase().compareTo(albums[middle].getArtist().toLowerCase()) == 0){
+            return middle;
+        } else {
+            return -1;
+        }
+    }
+    public int allSearchBinary(String target){
+        boolean titleSearch = true;
+        int low = 0, high = albums.length-1, middle = (low + high)/2;
+        while (target.toLowerCase().compareTo(albums[middle].getTitle().toLowerCase()) != 0 && low <= high){
+            if (target.toLowerCase().compareTo(albums[middle].getTitle().toLowerCase()) < 0){
+                high = middle - 1;
+            } else {
+                low = middle + 1;
+            }
+            middle = (low + high)/2;
+        }
+        if (target.toLowerCase().compareTo(albums[middle].getTitle().toLowerCase()) != 0){
+            while (target.toLowerCase().compareTo(albums[middle].getArtist().toLowerCase()) != 0 && low <= high){
+                if (target.toLowerCase().compareTo(albums[middle].getArtist().toLowerCase()) < 0){
+                    high = middle - 1;
+                } else {
+                    low = middle + 1;
+                }
+                middle = (low + high)/2;
+            }
+        }
+        if (target.toLowerCase().compareTo(albums[middle].getArtist().toLowerCase()) == 0){
+            return middle;
+        } else {
+            return -1;
+        }
+    }
     public void titleSortSelection(){
-        int min = 0;
-        Album temp = albums[0];
+        int min;
+        Album temp;
         for (int i = 0; i < albums.length-1; i++) {
-            for (int j = i + 1; i < albums.length; j++) {
-                if (albums[j].getTitle().compareTo(albums[min].getTitle()) == -1) {
+            min = i;
+            for (int j = i + 1; j < albums.length; j++) {
+                if (albums[j].getTitle().compareTo(albums[min].getTitle()) < 0) {
                     min = j;
                 }
-                temp = albums[i];
-                albums[min] =
+            }
+            temp = albums[min];
+            albums[min] = albums[i];
+            albums[i] = temp;
+        }
+    }
+    public void albumSortInsertion(){
+        Album temp;
+        for (int i = 1; i < albums.length; i++){
+            temp = albums[i];
+            for (int j = i - 1; j >= 0; j--){
+                if (temp.getArtist().compareTo(albums[j].getArtist()) < 0){
+                    albums[j + 1] = albums[j];
+                    albums[j] = temp;
+                }
             }
         }
     }
-    public int titleSeachBinary(String target){}
 
     public String toString(){
         String str = "";
