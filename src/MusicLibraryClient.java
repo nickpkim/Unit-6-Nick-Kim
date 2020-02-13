@@ -20,7 +20,7 @@ public class MusicLibraryClient {
         myLibrary.add(a7);
         myLibrary.add(a8);
 
-        /*System.out.println(myLibrary);
+        System.out.println(myLibrary);
 
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
 
@@ -49,19 +49,19 @@ public class MusicLibraryClient {
         System.out.println("sorted. printing...");
         System.out.println(myLibrary);
 
-        System.out.println("+++++++++++++++++++++++++++++++++++++++");*/
+        System.out.println("+++++++++++++++++++++++++++++++++++++++");
 
-        System.out.println(myLibrary);
         System.out.println("sorting...");
-        myLibrary.albumSortInsertion();
+        myLibrary.artistSortInsertion();
         System.out.println("sorted. printing...");
         System.out.println(myLibrary);
 
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
 
-        int loc3 = myLibrary.allSearchBinary("First");
+        //allSearchBinary could only work if both title and album were sorted
+        /*int loc3 = myLibrary.allSearchBinary("First");
         int loc4 = myLibrary.allSearchBinary("Bot");
         System.out.println(myLibrary.getAlbum(loc3));
-        System.out.println(myLibrary.getAlbum(loc4));
+        System.out.println(myLibrary.getAlbum(loc4));*/
     }
 }

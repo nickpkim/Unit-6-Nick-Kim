@@ -128,7 +128,7 @@ public class MusicLibrary {
         for (int i = 0; i < albums.length-1; i++) {
             min = i;
             for (int j = i + 1; j < albums.length; j++) {
-                if (albums[j].getTitle().compareTo(albums[min].getTitle()) < 0) {
+                if (albums[j].getTitle().toLowerCase().compareTo(albums[min].getTitle().toLowerCase()) < 0) {
                     min = j;
                 }
             }
@@ -137,12 +137,12 @@ public class MusicLibrary {
             albums[i] = temp;
         }
     }
-    public void albumSortInsertion(){
+    public void artistSortInsertion(){
         Album temp;
         for (int i = 1; i < albums.length; i++){
             temp = albums[i];
             for (int j = i - 1; j >= 0; j--){
-                if (temp.getArtist().compareTo(albums[j].getArtist()) < 0){
+                if (temp.getArtist().toLowerCase().compareTo(albums[j].getArtist().toLowerCase()) < 0){
                     albums[j + 1] = albums[j];
                     albums[j] = temp;
                 }
