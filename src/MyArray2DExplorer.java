@@ -46,7 +46,7 @@ public class MyArray2DExplorer {
             System.out.print(sum[i] + " ");
         }
         System.out.print("}");
-/*
+
         System.out.println();
         System.out.println();
 
@@ -56,7 +56,6 @@ public class MyArray2DExplorer {
             System.out.print(avg[i] + " ");
         }
         System.out.print("}");
-
 
         System.out.println();
         System.out.println();
@@ -70,7 +69,7 @@ public class MyArray2DExplorer {
         System.out.print("Test biggestRow: \n Expecting: 0 \n Actual: ");
         System.out.println(exp.biggestRow(array));
 
-        System.out.println();*/
+        System.out.println();
     }
     //WRITE YOUR METHODS BELOW
 
@@ -137,6 +136,49 @@ public class MyArray2DExplorer {
             arr[i] = sum;
         }
         return arr;
+    }
+    public double[] averageCol(int[][] nums){
+        double[] arr = new double[nums[0].length];
+        for (int i=0; i<nums[0].length; i++){
+            double avg = 0;
+            for (int j=0; j<nums.length; j++){
+                avg += nums[j][i];
+            }
+            avg = avg/nums.length;
+            arr[i] = avg;
+        }
+        return arr;
+    }
+    public int smallEven(int[][] matrix){
+        int min = 2147483646;
+        for (int i=0; i<matrix.length; i++){
+            for (int j=0; j<matrix[0].length; j++){
+                if (matrix[i][j] < min && matrix[i][j]%2 == 0){
+                    min = matrix[i][j];
+                }
+            }
+        }
+        return min;
+    }
+    public static int biggestRow(int[][] nums){
+        int maxSum = 0;
+        int rowIndex = 0;
+        for (int i=0; i<nums.length; i++){
+            int sum = 0;
+            for (int j=0; j<nums[0].length; j++){
+                sum += nums[i][j];
+            }
+            if (i == 0){
+                maxSum = sum;
+            } else {
+                if (sum > maxSum){
+                    maxSum = sum;
+                    rowIndex = i;
+                }
+            }
+
+        }
+        return rowIndex;
     }
 }
 
